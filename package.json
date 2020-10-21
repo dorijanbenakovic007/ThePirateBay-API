@@ -1,5 +1,5 @@
 {
-  "name": "tpbapi",
+  "name": "thepiratebayapi",
   "version": "1.0.0",
   "description": "TPB Search API",
   "main": "index.js",
@@ -11,5 +11,10 @@
   "dependencies": {
     "axios": "^0.20.0",
     "xmlhttprequest": "^1.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drkeey/TPBAPI"
   }
+
 }
