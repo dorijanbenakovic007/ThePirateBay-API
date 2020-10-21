@@ -12,7 +12,7 @@ npm install tpbapi
 ```
 ## Usage
 
-### Import
+
 ```javascript
 const TPBAPI = require('tpbapi')
 
