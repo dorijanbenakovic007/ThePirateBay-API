@@ -8,7 +8,7 @@ TPBAPI is a simple torrent search engine for ThePirateBay.
 Use the package manager [npm](https://www.npmjs.com/) to install.
 
 ```bash
-npm install tpbapi
+npm install thepiratebayapi
 ```
 ## Usage
 
