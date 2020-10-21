@@ -1,7 +1,7 @@
 ![alt text](tpb.png)
 
 # ThePirateBay API
-TPBAPI is torrent search engine for ThePirateBay.
+TPBAPI is a simple torrent search engine for ThePirateBay.
 
 ## Installation
 
@@ -44,7 +44,7 @@ tpbapi._config = {
 ```
 
 ### Functions
-Search
+search(search value, category ID, callback(torrents)) - Search torrents by string and category
 ```js
 //Games - 400 / PC - 401, Video - 200 / Movies - 201 / TV Shows - 205, Audio - 100 / Music - 101, Applications - 300....
 
@@ -52,8 +52,7 @@ tpbapi.search('avengers', 200 , (torrents) => {
   console.log(torrents)
 })
 ```
-
-Get Top 100 torrents by category
+getTopTorrents(category ID, callback(torrents)) - Get Top 100 torrents by category
 ```js
 //Get top 100 PC Games
 tpbapi.getTopTorrents( 401 , (torrents) => {
@@ -61,7 +60,7 @@ tpbapi.getTopTorrents( 401 , (torrents) => {
 })
 ```
 
-Generate magnet link
+generateMagnetLink(torrent) - Generate and return magnet link
 ```js
 //Example
 tpbapi.getTopTorrents( 401 , (torrents) => {

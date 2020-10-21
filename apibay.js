@@ -2,7 +2,7 @@
 const { default: Axios } = require("axios");
 
 
-class APITPB {
+class TPBAPI {
     constructor(headless){
         this.headless = headless || false
 
@@ -34,7 +34,6 @@ class APITPB {
         if (!typeof bool === "boolean") return console.error('Invalid input')
 
         this._config.CORS_bypass = bool
-
         
         if (this._config.CORS_bypass == true) {
             var cors_api_host = 'cors-anywhere.herokuapp.com';
@@ -136,4 +135,4 @@ class APITPB {
 
 }
 
-module.exports = APITPB
+module.exports = TPBAPI
