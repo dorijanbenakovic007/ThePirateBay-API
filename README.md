@@ -1,4 +1,4 @@
-![alt text](tpb.jpg)
+![alt text](tpb.png)
 
 # ThePirateBay API
 TPBAPI is torrent search engine for ThePirateBay.
