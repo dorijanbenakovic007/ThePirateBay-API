@@ -1,6 +1,6 @@
 {
   "name": "thepiratebayapi",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "TPB Search API",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,11 @@
     "type": "git",
     "url": "https://github.com/drkeey/TPBAPI"
   },
-  "keywords": ["tpb","torrent","search","api","pirate bay"]
-  
+  "keywords": [
+    "tpb",
+    "torrent",
+    "search",
+    "api",
+    "pirate bay"
+  ]
 }
