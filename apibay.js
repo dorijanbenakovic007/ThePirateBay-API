@@ -1,4 +1,4 @@
-
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const { default: Axios } = require("axios");
 
 
