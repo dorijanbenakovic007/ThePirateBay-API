@@ -83,7 +83,6 @@ class TPBAPI {
 
         Axios.get(url, { responseType: 'json' })
             .then(function (response) {
-                console.log('AJDE', response)
                 onDone(response.data)
             })
             .catch(function (error) {
@@ -105,7 +104,6 @@ class TPBAPI {
     search = (value, category, onDone) => {
         let config = this._config
 
-        console.log(value instanceof String, typeof value)
         if (!typeof value === "string" ) return console.error('Invalid value input')
         if (!typeof category === "number") return console.error('Invalid input')
 
@@ -113,7 +111,6 @@ class TPBAPI {
 
         Axios.get(url, { responseType: 'json' })
             .then(function (response) {
-                console.log('AJDE', response)
                 let data = response.data
                 //Filtriranje
                 if(config.removeZeroSeedersTorrents == true ) data.filter(torrent => torrent.seeders != 0)
