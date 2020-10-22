@@ -68,7 +68,6 @@ tpbapi.getTopTorrents( 401 , (torrents) => {
       torrent.magnetUrl = tpbapi.generateMagnetLink(torrent)
   })
 })
-const magnet = tpbapi.generateMagnetLink(torrent)
 ```
 
 In case you have problems with CORS, enable CORS Bypass
