@@ -20,23 +20,22 @@ let tpbapi = new TPBAPI()
 ```
 
 ### Config
-<b>CORS_bypass</b> If you get errors while fetching torrents<br />
 <b>proxy</b> Use proxies to fetch torrents. You can set it manually or it will fetch proxies for you.<br />
 <b>removeZeroSeedersTorrents</b> Removes all torrents with 0 seeders <br />
 <b>onlyTrusted</b> Removes all torrents for which uploader is not verified <br />
 <b>trackers</b> Current trackers are taken from thepiratebay.org <br />
 
 ```javascript
-tpbapi._config = {
-        CORS_bypass: false,
-        proxy: {
+       constructor() {
+        this._proxy = {
             enabled: false,
             ip: null,
-            port: null
-        },
-        removeZeroSeedersTorrents: false,
-        onlyTrusted: false,
-        trackers: [
+            port: null,
+            proxies: []
+        }
+        this._removeZeroSeedersTorrents = false
+        this._onlyTrusted = false
+        this._trackers = [
             'udp://tracker.coppersurfer.tk:6969/announce',
             'udp://9.rarbg.to:2920/announce',
             'udp://tracker.opentrackr.org:1337',
@@ -46,6 +45,7 @@ tpbapi._config = {
             'udp://tracker.cyberia.is:6969/announce'
         ]
     }
+    
 ```
 ## Category ID's
 ### Audio - 100
@@ -83,18 +83,20 @@ tpbapi.getTopTorrents( 401 , (torrents) => {
   })
 })
 ```
-getProxy() - Fetch proxies and store in _config.proxy.proxies. First fetched proxy will automatically be mounted. proxy.ip and proxy.port must be null when manually calling this function. Proxies from Germany and Great Britain are excluded.
+getProxy() - Fetch and mount proxies
 ```js
 //Example
 tpbapi.getProxy(() => {
-    console.table(tpb._config.proxy.proxies)
+     console.log(proxies)
+     tpbapi.mountProxy(proxies[0])
+     tpbapi.enableProxy(true)
+
+     tpbapi.getTopTorrents(400,(torrents) => {
+        console.log(torrents)
+    })
 })
 ```
 
-In case you have problems with CORS, enable CORS Bypass
-```js
-tpbapi.enableCORS_Bypass = true
-```
 
 
 

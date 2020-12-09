@@ -2,7 +2,6 @@ const { default: Axios } = require("axios");
 
 class TPBAPI {
     constructor() {
-        this.CORS_bypass = false
         this._proxy = {
             enabled: false,
             ip: null,
