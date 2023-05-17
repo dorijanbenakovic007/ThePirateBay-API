@@ -96,10 +96,3 @@ tpbapi.getProxy(() => {
     })
 })
 ```
-
-
-
-
-
-# License
-MIT © 2020 [drkeey](https://github.com/drkeey)
