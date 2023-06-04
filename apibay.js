@@ -84,6 +84,53 @@ class TPBAPI {
     }
 
     /**
+     * Get torrent files list by providing torrent id
+     * 
+     * @param {number} torrent_id ID of torrent.
+     * @param {function} onDone On torrent search  callback.
+     */
+    
+    getTorrentFiles = (torrent_id, onDone) => {
+        if (!typeof torrent_id === "number") return console.error('Invalid input')
+
+        let url = `https://apibay.org/f.php?id=${torrent_id}`
+        switch (this.proxy.enabled) {
+            case true:
+                this.getProxy(() => {
+                    Axios.get(url, {
+                        responseType: 'json', proxy: {
+                            protocol: 'http',
+                            host: this.proxy.ip,
+                            port: this.proxy.port
+                        }
+                    })
+                        .then(function (response) {
+                            let res = response.data
+
+                            onDone(res)
+                        })
+                        .catch(function (error) {
+                            console.error('TPBAPI: Error while fetching, apibay down or bad proxy.', error);
+                        })
+                })
+                break;
+
+            case false:
+                Axios.get(url, { responseType: 'json' })
+                    .then(function (response) {
+                        let res = response.data
+
+                        onDone(res)
+                    })
+                    .catch(function (error) {
+                        console.error('TPBAPI: Error while fetching torrents.', error);
+                    })
+                break;
+        }
+    }
+    
+
+    /**
   * Get Top 100 Torrent by category
   * 
   * Audio - 100 |
@@ -139,7 +186,6 @@ class TPBAPI {
                     })
                 break;
         }
-
     }
 
     /**

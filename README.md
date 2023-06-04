@@ -83,6 +83,15 @@ tpbapi.getTopTorrents( 401 , (torrents) => {
   })
 })
 ```
+getTorrentFiles(torrent_id) - Get list of torrent files by providing torrent id
+```js
+//Example
+tpbapi.search('avengers', 400, (torrents) => {
+    api.getTorrentFiles(torrents[0].id, (files) => {
+        console.log(files)
+    })
+})
+```
 getProxy() - Fetch and mount proxies
 ```js
 //Example
