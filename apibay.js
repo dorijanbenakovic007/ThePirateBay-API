@@ -58,14 +58,8 @@ class TPBAPI {
                 onDone(filteredProxies)
             })
             .catch(function (error) {
-                // handle error
                 console.error('TPBAPI: Error while fetching proxy', error);
-
             })
-            .then(function () {
-                // always executed
-
-            });
     }
 
     mountProxy = (proxyobj) => {
@@ -86,7 +80,6 @@ class TPBAPI {
         if (!typeof torrent === "object") return console.error('Invalid input')
 
         const trackersQueryString = `&tr=${this.trackers.map(encodeURIComponent).join('&tr=')}`;
-
         return `magnet:?xt=urn:btih:${torrent.info_hash}&dn=${encodeURIComponent(torrent.name)}${trackersQueryString}`;
     }
 
@@ -112,7 +105,6 @@ class TPBAPI {
         if (!typeof category === "number") return console.error('Invalid input')
 
         let url = `https://apibay.org/precompiled/data_top100_${category}.json`
-
         switch (this.proxy.enabled) {
             case true:
                 this.getProxy(() => {
@@ -126,18 +118,14 @@ class TPBAPI {
                         .then(function (response) {
                             let res = response.data
 
-                            if (this.removeZeroSeedersTorrents) res = res.filter(torrent => torrent.seeders != 0)
-                            if (this.onlyTrusted) res = res.filter(torrent => torrent.status != 'member')
-
+                            if (this.removeZeroSeedersTorrents) res = res.filter(torrent => torrent.seeders !== 0)
+                            if (this.onlyTrusted) res = res.filter(torrent => torrent.status !== 'member')
+                            
                             onDone(res)
                         })
                         .catch(function (error) {
-                            // handle error
                             console.error('TPBAPI: Error while fetching, apibay down or bad proxy.', error);
                         })
-                        .then(function () {
-                            // always executed
-                        });
                 })
                 break;
 
@@ -147,13 +135,8 @@ class TPBAPI {
                         onDone(response.data)
                     })
                     .catch(function (error) {
-                        // handle error
                         console.error('TPBAPI: Error while fetching torrents.', error);
-
                     })
-                    .then(function () {
-                        // always executed
-                    });
                 break;
         }
 
@@ -181,9 +164,7 @@ class TPBAPI {
         if (!typeof value === "string") return console.error('Invalid value input')
         if (!typeof category === "number") return console.error('Invalid input')
 
-        console.log(this.proxy)
         let url = `https://apibay.org/q.php?q=${value}&cat=${category}`
-
         switch (this.proxy.enabled) {
             case true:
                 this.getProxy(() => {
@@ -203,12 +184,8 @@ class TPBAPI {
                             onDone(res)
                         })
                         .catch(function (error) {
-                            // handle error
                             console.error('TPBAPI: Error while fetching, apibay down or bad proxy.', error);
                         })
-                        .then(function () {
-                            // always executed
-                        });
                 })
                 break;
 
@@ -221,16 +198,9 @@ class TPBAPI {
                         // handle error
                         console.error('TPBAPI: Error while fetching torrents.', error);
                     })
-                    .then(function () {
-                        // always executed
-                    });
                 break;
         }
-
     }
-
-
-
 }
 
 module.exports = TPBAPI
